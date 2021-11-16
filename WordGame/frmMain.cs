@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Media;
@@ -34,12 +35,34 @@ namespace WordGame
             InitializeComponent();
         }
 
-        private void populateTargets()
+        private void populateTargets(string dictName)
         {
+            var fn = string.Empty;
+            if (dictName == "nouns") fn = Application.StartupPath + "/Dictionaries/nouns.xls";
+
+            var conn = @"provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fn + ";Extended Properties='Excel 8.0;HRD=Yes;IMEX=1';"; //for above excel 2007  
+            
+            DataTable dtexcel = new DataTable();
+
+            using (OleDbConnection con = new OleDbConnection(conn))
+            {
+                try
+                {
+                    OleDbDataAdapter oleAdpt = new OleDbDataAdapter("select * from [Nouns$]", con); //here we read data from sheet1  
+                    oleAdpt.Fill(dtexcel); //fill excel data into dataTable  
+                }
+                catch (Exception ex){
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
             targets.Clear();
-            targets.Add(new Target("clue", "ipucu"));
-            targets.Add(new Target("purpose", "maksat"));
-            targets.Add(new Target("solution", "çözüm"));
+
+            foreach (DataRow dr in dtexcel.Rows)
+            {
+                targets.Add(new Target(dr[0].ToString(), dr[1].ToString()));
+            }
+
         }
 
         private void getBoardCoordinates()
@@ -55,7 +78,7 @@ namespace WordGame
             this.Text = Application.ProductName + " v" + Application.ProductVersion;
 
             getBoardCoordinates();
-            populateTargets();
+            populateTargets("nouns");
         }
 
         private void drawFinish()
