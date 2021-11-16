@@ -44,12 +44,14 @@ namespace WordGame
             this.label1 = new System.Windows.Forms.Label();
             this.boardPanel = new System.Windows.Forms.Panel();
             this.wordCountLBL = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.headerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.pauseBtn);
             this.panel1.Controls.Add(this.stopBtn);
             this.panel1.Controls.Add(this.startBtn);
@@ -201,6 +203,16 @@ namespace WordGame
             this.wordCountLBL.TabIndex = 4;
             this.wordCountLBL.Text = "[wordCountLBL]";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.Location = new System.Drawing.Point(30, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(305, 15);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Type the meaning of the falling word and press ENTER";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,6 +251,7 @@ namespace WordGame
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button pauseBtn;
         private System.Windows.Forms.Label wordCountLBL;
+        private System.Windows.Forms.Label label3;
     }
 }
 
