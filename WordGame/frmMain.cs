@@ -194,7 +194,8 @@ namespace WordGame
             foreach (Target t in ActiveTargets)
             {
                 if (t.isDead) continue;
-                if (t.Meaning.Equals(keyword))
+
+                if (t.Meaning.Contains(keyword))
                 {
                     t.KillMe();
                     makeSound();
