@@ -31,6 +31,8 @@ namespace WordGame
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.unmuteBTN = new System.Windows.Forms.Button();
+            this.muteBTN = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.pauseBtn = new System.Windows.Forms.Button();
             this.stopBtn = new System.Windows.Forms.Button();
@@ -45,10 +47,16 @@ namespace WordGame
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.boardPanel = new System.Windows.Forms.Panel();
-            this.muteBTN = new System.Windows.Forms.Button();
-            this.unmuteBTN = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.chooseADictionaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nounsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.sentencesMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.adverbsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.adjectivesMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.dictLBL = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.headerPanel.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,6 +74,30 @@ namespace WordGame
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(951, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // unmuteBTN
+            // 
+            this.unmuteBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.unmuteBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.unmuteBTN.Location = new System.Drawing.Point(576, 64);
+            this.unmuteBTN.Name = "unmuteBTN";
+            this.unmuteBTN.Size = new System.Drawing.Size(60, 24);
+            this.unmuteBTN.TabIndex = 7;
+            this.unmuteBTN.Text = "Unmute";
+            this.unmuteBTN.UseVisualStyleBackColor = true;
+            this.unmuteBTN.Click += new System.EventHandler(this.unmuteBTN_Click);
+            // 
+            // muteBTN
+            // 
+            this.muteBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.muteBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.muteBTN.Location = new System.Drawing.Point(513, 64);
+            this.muteBTN.Name = "muteBTN";
+            this.muteBTN.Size = new System.Drawing.Size(58, 24);
+            this.muteBTN.TabIndex = 6;
+            this.muteBTN.Text = "Mute";
+            this.muteBTN.UseVisualStyleBackColor = true;
+            this.muteBTN.Click += new System.EventHandler(this.muteBTN_Click);
             // 
             // label3
             // 
@@ -145,16 +177,18 @@ namespace WordGame
             // headerPanel
             // 
             this.headerPanel.BackColor = System.Drawing.Color.Crimson;
+            this.headerPanel.Controls.Add(this.dictLBL);
             this.headerPanel.Controls.Add(this.wordCountLBL);
             this.headerPanel.Controls.Add(this.unsuccessScore);
             this.headerPanel.Controls.Add(this.successScore);
             this.headerPanel.Controls.Add(this.label2);
             this.headerPanel.Controls.Add(this.label1);
+            this.headerPanel.Controls.Add(this.menuStrip1);
             this.headerPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerPanel.ForeColor = System.Drawing.Color.White;
             this.headerPanel.Location = new System.Drawing.Point(0, 0);
             this.headerPanel.Name = "headerPanel";
-            this.headerPanel.Size = new System.Drawing.Size(951, 73);
+            this.headerPanel.Size = new System.Drawing.Size(951, 105);
             this.headerPanel.TabIndex = 1;
             // 
             // wordCountLBL
@@ -162,7 +196,7 @@ namespace WordGame
             this.wordCountLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.wordCountLBL.AutoSize = true;
             this.wordCountLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.wordCountLBL.Location = new System.Drawing.Point(824, 43);
+            this.wordCountLBL.Location = new System.Drawing.Point(824, 73);
             this.wordCountLBL.Name = "wordCountLBL";
             this.wordCountLBL.Size = new System.Drawing.Size(115, 18);
             this.wordCountLBL.TabIndex = 4;
@@ -172,7 +206,7 @@ namespace WordGame
             // 
             this.unsuccessScore.AutoSize = true;
             this.unsuccessScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.unsuccessScore.Location = new System.Drawing.Point(141, 43);
+            this.unsuccessScore.Location = new System.Drawing.Point(141, 73);
             this.unsuccessScore.Name = "unsuccessScore";
             this.unsuccessScore.Size = new System.Drawing.Size(16, 18);
             this.unsuccessScore.TabIndex = 3;
@@ -182,7 +216,7 @@ namespace WordGame
             // 
             this.successScore.AutoSize = true;
             this.successScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.successScore.Location = new System.Drawing.Point(141, 13);
+            this.successScore.Location = new System.Drawing.Point(141, 43);
             this.successScore.Name = "successScore";
             this.successScore.Size = new System.Drawing.Size(16, 18);
             this.successScore.TabIndex = 2;
@@ -192,7 +226,7 @@ namespace WordGame
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(27, 43);
+            this.label2.Location = new System.Drawing.Point(27, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 18);
             this.label2.TabIndex = 1;
@@ -202,7 +236,7 @@ namespace WordGame
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(27, 13);
+            this.label1.Location = new System.Drawing.Point(27, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 18);
             this.label1.TabIndex = 0;
@@ -212,34 +246,72 @@ namespace WordGame
             // 
             this.boardPanel.BackColor = System.Drawing.Color.Black;
             this.boardPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boardPanel.Location = new System.Drawing.Point(0, 73);
+            this.boardPanel.Location = new System.Drawing.Point(0, 105);
             this.boardPanel.Name = "boardPanel";
-            this.boardPanel.Size = new System.Drawing.Size(951, 545);
+            this.boardPanel.Size = new System.Drawing.Size(951, 513);
             this.boardPanel.TabIndex = 2;
             // 
-            // muteBTN
+            // menuStrip1
             // 
-            this.muteBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.muteBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.muteBTN.Location = new System.Drawing.Point(513, 64);
-            this.muteBTN.Name = "muteBTN";
-            this.muteBTN.Size = new System.Drawing.Size(58, 24);
-            this.muteBTN.TabIndex = 6;
-            this.muteBTN.Text = "Mute";
-            this.muteBTN.UseVisualStyleBackColor = true;
-            this.muteBTN.Click += new System.EventHandler(this.muteBTN_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.chooseADictionaryToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(951, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // unmuteBTN
+            // chooseADictionaryToolStripMenuItem
             // 
-            this.unmuteBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.unmuteBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.unmuteBTN.Location = new System.Drawing.Point(576, 64);
-            this.unmuteBTN.Name = "unmuteBTN";
-            this.unmuteBTN.Size = new System.Drawing.Size(60, 24);
-            this.unmuteBTN.TabIndex = 7;
-            this.unmuteBTN.Text = "Unmute";
-            this.unmuteBTN.UseVisualStyleBackColor = true;
-            this.unmuteBTN.Click += new System.EventHandler(this.unmuteBTN_Click);
+            this.chooseADictionaryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nounsMenu,
+            this.sentencesMenu,
+            this.adverbsMenu,
+            this.adjectivesMenu});
+            this.chooseADictionaryToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.chooseADictionaryToolStripMenuItem.Name = "chooseADictionaryToolStripMenuItem";
+            this.chooseADictionaryToolStripMenuItem.Size = new System.Drawing.Size(137, 20);
+            this.chooseADictionaryToolStripMenuItem.Text = "Change the Dictionary";
+            this.chooseADictionaryToolStripMenuItem.Click += new System.EventHandler(this.chooseADictionaryToolStripMenuItem_Click);
+            // 
+            // nounsMenu
+            // 
+            this.nounsMenu.Name = "nounsMenu";
+            this.nounsMenu.Size = new System.Drawing.Size(180, 22);
+            this.nounsMenu.Text = "Nouns";
+            this.nounsMenu.Click += new System.EventHandler(this.nounsMenu_Click);
+            // 
+            // sentencesMenu
+            // 
+            this.sentencesMenu.Name = "sentencesMenu";
+            this.sentencesMenu.Size = new System.Drawing.Size(180, 22);
+            this.sentencesMenu.Text = "Sentences";
+            this.sentencesMenu.Click += new System.EventHandler(this.sentencesMenu_Click);
+            // 
+            // adverbsMenu
+            // 
+            this.adverbsMenu.Name = "adverbsMenu";
+            this.adverbsMenu.Size = new System.Drawing.Size(180, 22);
+            this.adverbsMenu.Text = "Adverbs";
+            this.adverbsMenu.Click += new System.EventHandler(this.adverbsMenu_Click);
+            // 
+            // adjectivesMenu
+            // 
+            this.adjectivesMenu.Name = "adjectivesMenu";
+            this.adjectivesMenu.Size = new System.Drawing.Size(180, 22);
+            this.adjectivesMenu.Text = "Adjectives";
+            this.adjectivesMenu.Click += new System.EventHandler(this.adjectivesMenu_Click);
+            // 
+            // dictLBL
+            // 
+            this.dictLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dictLBL.AutoSize = true;
+            this.dictLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dictLBL.Location = new System.Drawing.Point(824, 43);
+            this.dictLBL.Name = "dictLBL";
+            this.dictLBL.Size = new System.Drawing.Size(65, 18);
+            this.dictLBL.TabIndex = 6;
+            this.dictLBL.Text = "[dictLBL]";
             // 
             // frmMain
             // 
@@ -259,6 +331,8 @@ namespace WordGame
             this.panel1.PerformLayout();
             this.headerPanel.ResumeLayout(false);
             this.headerPanel.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -282,6 +356,13 @@ namespace WordGame
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button unmuteBTN;
         private System.Windows.Forms.Button muteBTN;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem chooseADictionaryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nounsMenu;
+        private System.Windows.Forms.ToolStripMenuItem sentencesMenu;
+        private System.Windows.Forms.ToolStripMenuItem adverbsMenu;
+        private System.Windows.Forms.ToolStripMenuItem adjectivesMenu;
+        private System.Windows.Forms.Label dictLBL;
     }
 }
 

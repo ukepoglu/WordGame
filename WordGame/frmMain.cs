@@ -24,22 +24,25 @@ namespace WordGame
         private int boardWidth = 0;
         private int boardHeight = 0;
         private int finishLine = 20;
+        private int fallingSpeed = 5;
 
         private int success = 0;
         private int unsuccess = 0;
 
         private int score = 0;
         private bool mute = false;
+        private string dict = "nouns";
 
         public frmMain()
         {
             InitializeComponent();
         }
 
-        private void populateTargets(string dictName)
+        private void populateTargets()
         {
             var fn = string.Empty;
-            if (dictName == "nouns") fn = Application.StartupPath + "/Dictionaries/nouns.xls";
+
+            if (dict == "nouns") fn = Application.StartupPath + "/Dictionaries/nouns.xls";           
 
             var conn = @"provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fn + ";Extended Properties='Excel 8.0;HDR=No;IMEX=1';"; //for above excel 2007  
             
@@ -49,7 +52,7 @@ namespace WordGame
             {
                 try
                 {
-                    OleDbDataAdapter oleAdpt = new OleDbDataAdapter("select * from [Nouns$]", con); //here we read data from sheet1  
+                    OleDbDataAdapter oleAdpt = new OleDbDataAdapter("select * from [nouns$]", con); //here we read data from sheet1  
                     oleAdpt.Fill(dtexcel); //fill excel data into dataTable  
                 }
                 catch (Exception ex){
@@ -80,7 +83,8 @@ namespace WordGame
             this.Text = Application.ProductName + " v" + Application.ProductVersion;
 
             getBoardCoordinates();
-            populateTargets("nouns");
+            changeDict(dict);
+            populateTargets();
         }
 
         private void drawFinish()
@@ -148,7 +152,7 @@ namespace WordGame
                 if (t.isDead) continue;
 
                 var p = t.LabelObject.Location;
-                p.Y += 10;
+                p.Y += fallingSpeed;
                 if (p.Y > (boardHeight - finishLine))
                 {
                     t.KillMe();
@@ -239,6 +243,37 @@ namespace WordGame
         private void unmuteBTN_Click(object sender, EventArgs e)
         {
             mute = false;
+        }
+
+        private void chooseADictionaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nounsMenu_Click(object sender, EventArgs e)
+        {
+            changeDict("nouns");
+        }
+
+        private void sentencesMenu_Click(object sender, EventArgs e)
+        {
+            changeDict("sentences");
+        }
+
+        private void adverbsMenu_Click(object sender, EventArgs e)
+        {
+            changeDict("adverbs");
+        }
+
+        private void adjectivesMenu_Click(object sender, EventArgs e)
+        {
+            changeDict("adjectves");
+        }
+
+        private void changeDict(string dictName)
+        {
+            dict = dictName;
+            dictLBL.Text = dict;
         }
     }
 }
