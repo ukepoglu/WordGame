@@ -31,6 +31,7 @@ namespace WordGame
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.pauseBtn = new System.Windows.Forms.Button();
             this.stopBtn = new System.Windows.Forms.Button();
             this.startBtn = new System.Windows.Forms.Button();
@@ -38,19 +39,22 @@ namespace WordGame
             this.keywordTB = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.headerPanel = new System.Windows.Forms.Panel();
+            this.wordCountLBL = new System.Windows.Forms.Label();
             this.unsuccessScore = new System.Windows.Forms.Label();
             this.successScore = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.boardPanel = new System.Windows.Forms.Panel();
-            this.wordCountLBL = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.muteBTN = new System.Windows.Forms.Button();
+            this.unmuteBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.headerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.unmuteBTN);
+            this.panel1.Controls.Add(this.muteBTN);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.pauseBtn);
             this.panel1.Controls.Add(this.stopBtn);
@@ -62,6 +66,16 @@ namespace WordGame
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(951, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.Location = new System.Drawing.Point(30, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(305, 15);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Type the meaning of the falling word and press ENTER";
             // 
             // pauseBtn
             // 
@@ -143,6 +157,17 @@ namespace WordGame
             this.headerPanel.Size = new System.Drawing.Size(951, 73);
             this.headerPanel.TabIndex = 1;
             // 
+            // wordCountLBL
+            // 
+            this.wordCountLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.wordCountLBL.AutoSize = true;
+            this.wordCountLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.wordCountLBL.Location = new System.Drawing.Point(824, 43);
+            this.wordCountLBL.Name = "wordCountLBL";
+            this.wordCountLBL.Size = new System.Drawing.Size(115, 18);
+            this.wordCountLBL.TabIndex = 4;
+            this.wordCountLBL.Text = "[wordCountLBL]";
+            // 
             // unsuccessScore
             // 
             this.unsuccessScore.AutoSize = true;
@@ -192,26 +217,29 @@ namespace WordGame
             this.boardPanel.Size = new System.Drawing.Size(951, 545);
             this.boardPanel.TabIndex = 2;
             // 
-            // wordCountLBL
+            // muteBTN
             // 
-            this.wordCountLBL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.wordCountLBL.AutoSize = true;
-            this.wordCountLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.wordCountLBL.Location = new System.Drawing.Point(824, 43);
-            this.wordCountLBL.Name = "wordCountLBL";
-            this.wordCountLBL.Size = new System.Drawing.Size(115, 18);
-            this.wordCountLBL.TabIndex = 4;
-            this.wordCountLBL.Text = "[wordCountLBL]";
+            this.muteBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.muteBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.muteBTN.Location = new System.Drawing.Point(513, 64);
+            this.muteBTN.Name = "muteBTN";
+            this.muteBTN.Size = new System.Drawing.Size(58, 24);
+            this.muteBTN.TabIndex = 6;
+            this.muteBTN.Text = "Mute";
+            this.muteBTN.UseVisualStyleBackColor = true;
+            this.muteBTN.Click += new System.EventHandler(this.muteBTN_Click);
             // 
-            // label3
+            // unmuteBTN
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(30, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(305, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Type the meaning of the falling word and press ENTER";
+            this.unmuteBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.unmuteBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.unmuteBTN.Location = new System.Drawing.Point(576, 64);
+            this.unmuteBTN.Name = "unmuteBTN";
+            this.unmuteBTN.Size = new System.Drawing.Size(60, 24);
+            this.unmuteBTN.TabIndex = 7;
+            this.unmuteBTN.Text = "Unmute";
+            this.unmuteBTN.UseVisualStyleBackColor = true;
+            this.unmuteBTN.Click += new System.EventHandler(this.unmuteBTN_Click);
             // 
             // frmMain
             // 
@@ -252,6 +280,8 @@ namespace WordGame
         private System.Windows.Forms.Button pauseBtn;
         private System.Windows.Forms.Label wordCountLBL;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button unmuteBTN;
+        private System.Windows.Forms.Button muteBTN;
     }
 }
 

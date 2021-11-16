@@ -29,6 +29,7 @@ namespace WordGame
         private int unsuccess = 0;
 
         private int score = 0;
+        private bool mute = false;
 
         public frmMain()
         {
@@ -125,6 +126,8 @@ namespace WordGame
 
         void makeSound()
         {
+            if (mute) return;
+
             SoundPlayer fire = new SoundPlayer(Application.StartupPath + "/sounds/fire.wav");
             fire.Play();
         }
@@ -226,6 +229,16 @@ namespace WordGame
         private void pauseBtn_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
+        }
+
+        private void muteBTN_Click(object sender, EventArgs e)
+        {
+            mute = true;
+        }
+
+        private void unmuteBTN_Click(object sender, EventArgs e)
+        {
+            mute = false;
         }
     }
 }
