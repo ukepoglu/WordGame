@@ -40,7 +40,7 @@ namespace WordGame
             var fn = string.Empty;
             if (dictName == "nouns") fn = Application.StartupPath + "/Dictionaries/nouns.xls";
 
-            var conn = @"provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fn + ";Extended Properties='Excel 8.0;HRD=Yes;IMEX=1';"; //for above excel 2007  
+            var conn = @"provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fn + ";Extended Properties='Excel 8.0;HDR=No;IMEX=1';"; //for above excel 2007  
             
             DataTable dtexcel = new DataTable();
 
@@ -63,6 +63,7 @@ namespace WordGame
                 targets.Add(new Target(dr[0].ToString(), dr[1].ToString()));
             }
 
+            wordCountLBL.Text = targets.Count.ToString();
         }
 
         private void getBoardCoordinates()
@@ -96,6 +97,7 @@ namespace WordGame
 
             t.LabelObject.ForeColor = Color.White;
             t.LabelObject.Font = new Font("Arial", 11, FontStyle.Bold);
+            t.LabelObject.Size = new Size(118,18);
             t.LabelObject.Text = t.Word;
             t.LabelObject.Location = new Point(_random.Next(boardWidth-100), 1);
             t.LabelObject.Parent = boardPanel;
